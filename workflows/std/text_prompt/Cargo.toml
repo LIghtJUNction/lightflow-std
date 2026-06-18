@@ -1,0 +1,12 @@
+[package]
+name = "lightflow-text-prompt"
+version = "0.1.0"
+edition = "2024"
+description = "LightFlow standard workflow for converting structured input into text prompts."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/lightjunction/lightflow-std"
+keywords = ["lightflow", "workflow", "text"]
+categories = ["development-tools"]
+
+[dependencies]
+lightflow = { workspace = true }
