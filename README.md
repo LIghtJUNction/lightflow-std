@@ -36,10 +36,10 @@ crate under `workflows/std/<short-name>/` and includes an agent skill under
 
 ## Usage
 
-Install the collection into a project or global LightFlow home:
+Import the collection into a project or global LightFlow home:
 
 ```bash
-lfw install --global /path/to/lightflow-std
+lfw import --global /path/to/lightflow-std
 ```
 
 Run a workflow:
