@@ -9,4 +9,4 @@ keywords = ["lightflow", "workflow"]
 categories = ["development-tools"]
 
 [dependencies]
-lightflow = "0.1.1"
+lightflow = { workspace = true }
