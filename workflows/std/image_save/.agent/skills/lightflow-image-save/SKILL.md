@@ -21,3 +21,13 @@ Use `lightflow.image.save` to copy a PNG image to a chosen output path.
 ```bash
 lfw run lightflow.image.save -i image_path=./input.png -i output_path=./out.png
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.save/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

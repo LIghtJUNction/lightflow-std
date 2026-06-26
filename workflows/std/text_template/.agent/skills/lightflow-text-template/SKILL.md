@@ -21,3 +21,13 @@ Use `lightflow.text.template` to render prompt text with `{{key}}` placeholders.
 ```bash
 lfw run lightflow.text.template -i template='Describe {{topic}}' -i vars='{"topic":"a quiet lake"}'
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text.template/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

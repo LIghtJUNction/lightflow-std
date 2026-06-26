@@ -21,3 +21,13 @@ Use `lightflow.llm.classify` to choose a label from a JSON label array. The buil
 ```bash
 lfw run lightflow.llm.classify -i text='urgent billing issue' -i labels='["billing","support"]'
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.llm.classify/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

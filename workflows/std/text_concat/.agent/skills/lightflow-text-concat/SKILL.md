@@ -22,3 +22,13 @@ Use `lightflow.text.concat` to join two text inputs or an array of values.
 ```bash
 lfw run lightflow.text.concat -i a=hello -i b=world -i separator=' '
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text.concat/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

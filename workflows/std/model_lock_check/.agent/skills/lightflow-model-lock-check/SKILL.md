@@ -20,3 +20,13 @@ Use `lightflow.model.lock_check` to check whether `lfw.lock` contains a model en
 ```bash
 lfw run lightflow.model.lock_check -i workflow_id=lightflow.text_to_image -i requirement_id=image_model
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.model.lock_check/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

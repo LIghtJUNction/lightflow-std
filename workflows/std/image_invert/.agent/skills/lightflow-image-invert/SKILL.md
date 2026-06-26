@@ -30,3 +30,12 @@ lfw run lightflow.text_to_image \
 
 The second stage receives the first stage outputs as inputs. Set `output_path`
 on the invert stage to avoid writing beside the source image.
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.invert/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

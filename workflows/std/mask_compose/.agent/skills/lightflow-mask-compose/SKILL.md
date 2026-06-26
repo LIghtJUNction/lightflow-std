@@ -21,3 +21,13 @@ Use `lightflow.mask.compose` to combine two PNG masks into a grayscale mask arti
 ```bash
 lfw run lightflow.mask.compose -i mask_a_path=mask-a.png -i mask_b_path=mask-b.png -i mode=max
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.mask.compose/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

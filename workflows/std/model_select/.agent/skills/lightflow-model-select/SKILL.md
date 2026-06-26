@@ -21,3 +21,13 @@ Use `lightflow.model.select` to choose a model variant by id or format.
 ```bash
 lfw run lightflow.model.select -i requirement_id=image_model -i preferred=gguf -i variants='[{"id":"q4","format":"gguf"}]'
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.model.select/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

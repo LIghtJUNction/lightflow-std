@@ -20,3 +20,13 @@ Use `lightflow.image.edit` for image-to-image preview workflows. The builtin run
 ```bash
 lfw run lightflow.image.edit -i image_path=input.png -i prompt='make the lighting warmer'
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.edit/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

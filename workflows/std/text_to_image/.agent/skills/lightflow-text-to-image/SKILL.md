@@ -31,3 +31,13 @@ lfw run lightflow.text_to_image \
   -i height=512 \
   -i output_path='"out/lake.png"'
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text_to_image/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```

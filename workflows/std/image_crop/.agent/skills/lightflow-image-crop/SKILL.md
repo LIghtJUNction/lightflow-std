@@ -22,3 +22,13 @@ Use `lightflow.image.crop` to crop a rectangular region from a PNG image.
 ```bash
 lfw run lightflow.image.crop -i image_path=./input.png -i x=0 -i y=0 -i width=512 -i height=512
 ```
+
+## API Usage
+
+Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
+
+```bash
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.crop/run \
+  -H 'content-type: application/json' \
+  -d '{"inputs":{}}'
+```
