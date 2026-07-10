@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.control.merge")
-        .version("0.1.0")
+    workflow!()
         .name("Control Merge")
         .description("Merge two JSON values using a selected merge mode.")
         .input("a", "json")

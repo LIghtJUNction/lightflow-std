@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.text.template")
-        .version("0.1.0")
+    workflow!()
         .name("Text Template")
         .description("Render a text template with JSON variables.")
         .input("template", "text")

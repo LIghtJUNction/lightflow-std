@@ -1,16 +1,16 @@
 ---
 name: LightFlow Image Save
-description: Use this skill when working with the lightflow.image.save workflow that copies PNG images to chosen output paths.
+description: Use this skill when working with the lightflow.image_save workflow that copies PNG images to chosen output paths.
 version: 0.1.0
 ---
 
 # LightFlow Image Save
 
-Use `lightflow.image.save` to copy a PNG image to a chosen output path.
+Use `lightflow.image_save` to copy a PNG image to a chosen output path.
 
 ## Workflow
 
-- Workflow id: `lightflow.image.save`
+- Workflow id: `lightflow.image_save`
 - Runtime: `lightflow.image.save`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Input `output_path`: optional destination PNG path; artifact kind `image`; widget `file_save`.
@@ -19,7 +19,7 @@ Use `lightflow.image.save` to copy a PNG image to a chosen output path.
 ## Usage
 
 ```bash
-lfw run lightflow.image.save -i image_path=./input.png -i output_path=./out.png
+lfw run lightflow.image_save -i image_path=./input.png -i output_path=./out.png
 ```
 
 ## API Usage
@@ -27,7 +27,7 @@ lfw run lightflow.image.save -i image_path=./input.png -i output_path=./out.png
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.save/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image_save/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

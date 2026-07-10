@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.text_result")
-        .version("0.1.0")
+    workflow!()
         .name("Text Result")
         .description("Normalize generated text into a final result.")
         .input("text", "text")

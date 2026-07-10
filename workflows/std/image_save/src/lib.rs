@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.save")
-        .version("0.1.0")
+    workflow!()
         .name("Image Save")
         .description("Copy a PNG image to a selected output path.")
         .input("image_path", "path")

@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.text.concat")
-        .version("0.1.0")
+    workflow!()
         .name("Text Concat")
         .description("Concatenate two text values or an array of text values.")
         .input("a", "text")

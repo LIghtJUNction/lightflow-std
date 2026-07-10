@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.llm.generate")
-        .version("0.1.0")
+    workflow!()
         .name("LLM Generate")
         .description("Generate deterministic mock LLM text for offline workflow composition.")
         .input("prompt", "text")

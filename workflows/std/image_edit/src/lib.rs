@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.edit")
-        .version("0.1.0")
+    workflow!()
         .name("Image Edit Preview")
         .description("Create a deterministic preview image edit from a source PNG and prompt.")
         .input("image_path", "path")

@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.text.regex")
-        .version("0.1.0")
+    workflow!()
         .name("Text Regex")
         .description("Match or replace text with a regular expression.")
         .input("text", "text")

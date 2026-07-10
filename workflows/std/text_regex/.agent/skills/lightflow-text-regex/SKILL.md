@@ -1,16 +1,16 @@
 ---
 name: LightFlow Text Regex
-description: Use this skill when working with the lightflow.text.regex workflow that matches or replaces text with regular expressions.
+description: Use this skill when working with the lightflow.text_regex workflow that matches or replaces text with regular expressions.
 version: 0.1.0
 ---
 
 # LightFlow Text Regex
 
-Use `lightflow.text.regex` to run deterministic regex matching or replacement in a workflow.
+Use `lightflow.text_regex` to run deterministic regex matching or replacement in a workflow.
 
 ## Workflow
 
-- Workflow id: `lightflow.text.regex`
+- Workflow id: `lightflow.text_regex`
 - Runtime: `lightflow.text.regex`.
 - Input `text`: required source text; widget `textarea`.
 - Input `pattern`: required Rust regex pattern.
@@ -20,7 +20,7 @@ Use `lightflow.text.regex` to run deterministic regex matching or replacement in
 ## Usage
 
 ```bash
-lfw run lightflow.text.regex -i text='cat 42' -i pattern='(\d+)' -i replacement='id:$1'
+lfw run lightflow.text_regex -i text='cat 42' -i pattern='(\d+)' -i replacement='id:$1'
 ```
 
 ## API Usage
@@ -28,7 +28,7 @@ lfw run lightflow.text.regex -i text='cat 42' -i pattern='(\d+)' -i replacement=
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text.regex/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text_regex/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

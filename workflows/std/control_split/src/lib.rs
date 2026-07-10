@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.control.split")
-        .version("0.1.0")
+    workflow!()
         .name("Control Split")
         .description("Split a JSON array or object into first, rest, and items outputs.")
         .input("value", "json")

@@ -1,16 +1,16 @@
 ---
 name: LightFlow Model Select
-description: Use this skill when working with the lightflow.model.select workflow that chooses a model variant from JSON metadata.
+description: Use this skill when working with the lightflow.model_select workflow that chooses a model variant from JSON metadata.
 version: 0.1.0
 ---
 
 # LightFlow Model Select
 
-Use `lightflow.model.select` to choose a model variant by id or format.
+Use `lightflow.model_select` to choose a model variant by id or format.
 
 ## Workflow
 
-- Workflow id: `lightflow.model.select`
+- Workflow id: `lightflow.model_select`
 - Runtime: `lightflow.model.select`.
 - Input `variants`: required JSON array.
 - Input `preferred`: optional variant id or format.
@@ -19,7 +19,7 @@ Use `lightflow.model.select` to choose a model variant by id or format.
 ## Usage
 
 ```bash
-lfw run lightflow.model.select -i requirement_id=image_model -i preferred=gguf -i variants='[{"id":"q4","format":"gguf"}]'
+lfw run lightflow.model_select -i requirement_id=image_model -i preferred=gguf -i variants='[{"id":"q4","format":"gguf"}]'
 ```
 
 ## API Usage
@@ -27,7 +27,7 @@ lfw run lightflow.model.select -i requirement_id=image_model -i preferred=gguf -
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.model.select/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.model_select/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

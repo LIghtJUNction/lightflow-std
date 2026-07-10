@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.control.if")
-        .version("0.1.0")
+    workflow!()
         .name("Control If")
         .description("Select one of two JSON values based on a boolean condition.")
         .input("condition", "boolean")

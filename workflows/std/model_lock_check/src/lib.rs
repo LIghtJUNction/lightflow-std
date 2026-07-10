@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.model.lock_check")
-        .version("0.1.0")
+    workflow!()
         .name("Model Lock Check")
         .description("Check whether a workflow model requirement is recorded in lfw.lock.")
         .input("workflow_id", "text")

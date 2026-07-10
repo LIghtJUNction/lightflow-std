@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.text_to_image")
-        .version("0.1.0")
+    workflow!()
         .name("Text To Image")
         .description(
             "Generate an image artifact from a text prompt through a pluggable image runtime.",

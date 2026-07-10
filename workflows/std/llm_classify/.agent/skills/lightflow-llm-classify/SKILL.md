@@ -1,16 +1,16 @@
 ---
 name: LightFlow LLM Classify
-description: Use this skill when working with the lightflow.llm.classify workflow that classifies text into labels offline.
+description: Use this skill when working with the lightflow.llm_classify workflow that classifies text into labels offline.
 version: 0.1.0
 ---
 
 # LightFlow LLM Classify
 
-Use `lightflow.llm.classify` to choose a label from a JSON label array. The builtin implementation is deterministic and offline.
+Use `lightflow.llm_classify` to choose a label from a JSON label array. The builtin implementation is deterministic and offline.
 
 ## Workflow
 
-- Workflow id: `lightflow.llm.classify`
+- Workflow id: `lightflow.llm_classify`
 - Runtime: `lightflow.llm.classify`.
 - Input `text`: required text.
 - Input `labels`: required JSON array of labels.
@@ -19,7 +19,7 @@ Use `lightflow.llm.classify` to choose a label from a JSON label array. The buil
 ## Usage
 
 ```bash
-lfw run lightflow.llm.classify -i text='urgent billing issue' -i labels='["billing","support"]'
+lfw run lightflow.llm_classify -i text='urgent billing issue' -i labels='["billing","support"]'
 ```
 
 ## API Usage
@@ -27,7 +27,7 @@ lfw run lightflow.llm.classify -i text='urgent billing issue' -i labels='["billi
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.llm.classify/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.llm_classify/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

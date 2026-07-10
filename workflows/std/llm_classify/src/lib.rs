@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.llm.classify")
-        .version("0.1.0")
+    workflow!()
         .name("LLM Classify")
         .description("Classify text against a list of labels with deterministic offline matching.")
         .input("text", "text")

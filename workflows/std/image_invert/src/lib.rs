@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.invert")
-        .version("0.1.0")
+    workflow!()
         .name("Image Invert")
         .description("Invert the colors of an input PNG image.")
         .input("image_path", "path")

@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.resize")
-        .version("0.1.0")
+    workflow!()
         .name("Image Resize")
         .description("Resize a PNG image with nearest-neighbor sampling.")
         .input("image_path", "path")

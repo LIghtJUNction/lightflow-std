@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.crop")
-        .version("0.1.0")
+    workflow!()
         .name("Image Crop")
         .description("Crop a rectangular region from a PNG image.")
         .input("image_path", "path")

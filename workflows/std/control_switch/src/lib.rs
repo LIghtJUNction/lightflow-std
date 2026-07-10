@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.control.switch")
-        .version("0.1.0")
+    workflow!()
         .name("Control Switch")
         .description("Select a JSON value from a cases object by selector.")
         .input("selector", "text")

@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.image.inpaint")
-        .version("0.1.0")
+    workflow!()
         .name("Image Inpaint Preview")
         .description("Create a deterministic preview inpaint from a source PNG, mask, and prompt.")
         .input("image_path", "path")

@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.model.select")
-        .version("0.1.0")
+    workflow!()
         .name("Model Select")
         .description("Select a model variant from a JSON variant list.")
         .input("requirement_id", "text")

@@ -12,12 +12,11 @@ ranges, enum values, widget hints, artifact kinds, and model requirement
 bindings. Runtime-backed leaf workflows should declare a capability that exists
 in LightFlow's Executor Registry.
 
-`lightflow.std` is a normal workflow crate in this repository, not a backend
-built-in. It is reserved for minimal, abstract, reusable building blocks and
-must not contain agent behavior, provider integrations, or business templates.
+Every node is a separate normal workflow crate in this repository; there is no
+aggregate `std/std` workflow crate.
 
-`lightflow.text_plan` depends on and nests `lightflow.std` to verify that the
-standard workflow path is exercised by a real local workflow.
+`lightflow.text_plan` composes `lightflow.text_prompt` and
+`lightflow.text_result` to exercise the standard workflow path.
 
 Every workflow crate in this repository includes a skill at
 `.agent/skills/<skill-name>/SKILL.md`. Update that skill whenever inputs,

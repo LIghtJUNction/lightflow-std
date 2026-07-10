@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.json.extract")
-        .version("0.1.0")
+    workflow!()
         .name("JSON Extract")
         .description("Extract a value from JSON by dot path.")
         .input("value", "json")

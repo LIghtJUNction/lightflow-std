@@ -1,16 +1,16 @@
 ---
 name: LightFlow Image Crop
-description: Use this skill when working with the lightflow.image.crop workflow that crops PNG image artifacts.
+description: Use this skill when working with the lightflow.image_crop workflow that crops PNG image artifacts.
 version: 0.1.0
 ---
 
 # LightFlow Image Crop
 
-Use `lightflow.image.crop` to crop a rectangular region from a PNG image.
+Use `lightflow.image_crop` to crop a rectangular region from a PNG image.
 
 ## Workflow
 
-- Workflow id: `lightflow.image.crop`
+- Workflow id: `lightflow.image_crop`
 - Runtime: `lightflow.image.crop`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Inputs `x`, `y`, `width`, and `height`: crop rectangle; widget `number`.
@@ -20,7 +20,7 @@ Use `lightflow.image.crop` to crop a rectangular region from a PNG image.
 ## Usage
 
 ```bash
-lfw run lightflow.image.crop -i image_path=./input.png -i x=0 -i y=0 -i width=512 -i height=512
+lfw run lightflow.image_crop -i image_path=./input.png -i x=0 -i y=0 -i width=512 -i height=512
 ```
 
 ## API Usage
@@ -28,7 +28,7 @@ lfw run lightflow.image.crop -i image_path=./input.png -i x=0 -i y=0 -i width=51
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.crop/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image_crop/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

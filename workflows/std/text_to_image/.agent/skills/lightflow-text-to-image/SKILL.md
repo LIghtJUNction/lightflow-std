@@ -11,6 +11,7 @@ Use `lightflow.text_to_image` for the built-in preview image runtime. This workf
 ## Workflow
 
 - Workflow id: `lightflow.text_to_image`
+- Cargo package `lightflow-text-to-image` supplies this ID and its Cargo package version through `workflow!()`.
 - Input `prompt`: required positive prompt; widget `prompt`.
 - Input `negative`: optional negative prompt; default `""`; widget `textarea`.
 - Input `width`: optional integer; default `512`; range `64..2048`; step `8`; widget `number`.

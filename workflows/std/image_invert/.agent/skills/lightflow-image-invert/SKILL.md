@@ -1,6 +1,6 @@
 ---
 name: LightFlow Image Invert
-description: Use this skill when working with the lightflow.image.invert standard workflow, inverting PNG outputs, or composing image inversion after another LightFlow image workflow.
+description: Use this skill when working with the lightflow.image_invert standard workflow, inverting PNG outputs, or composing image inversion after another LightFlow image workflow.
 version: 0.1.0
 ---
 
@@ -10,7 +10,7 @@ Use this skill to invert the colors of a PNG image generated or referenced by a 
 
 ## Workflow
 
-- Workflow id: `lightflow.image.invert`
+- Workflow id: `lightflow.image_invert`
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Input `output_path`: optional destination PNG path; artifact kind `image`; widget `file_save`.
 - Output `image_path`: inverted PNG path; artifact kind `image`.
@@ -24,7 +24,7 @@ Quote or escape the pipe token so the shell passes it to `lfw`:
 lfw run lightflow.text_to_image \
   -i prompt='"a small cat photo"' \
   -i output_path='"out/cat.png"' \
-  '|' lightflow.image.invert \
+  '|' lightflow.image_invert \
   -i output_path='"out/cat-inverted.png"'
 ```
 
@@ -35,7 +35,7 @@ on the invert stage to avoid writing beside the source image.
 Start `lfw serve`, then call the workflow through the shared HTTP run contract. Adjust `inputs` to match the workflow contract above.
 
 ```bash
-curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image.invert/run \
+curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.image_invert/run \
   -H 'content-type: application/json' \
   -d '{"inputs":{}}'
 ```

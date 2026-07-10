@@ -1,8 +1,7 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow("lightflow.mask.compose")
-        .version("0.1.0")
+    workflow!()
         .name("Mask Compose")
         .description("Compose two PNG masks into one grayscale mask.")
         .input("mask_a_path", "path")
