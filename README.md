@@ -1,7 +1,7 @@
 # lightflow-std
 
 Standard LightFlow workflow collection. Each workflow is a normal Rust library
-crate under `workflows/std/<short-name>/` and includes an agent skill under
+crate under `workflows/<short-name>/` and includes an agent skill under
 `.agent/skills/<skill-name>/SKILL.md`.
 
 ## Workflows
