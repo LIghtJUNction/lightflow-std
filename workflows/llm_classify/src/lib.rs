@@ -1,21 +1,26 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("LLM Classify")
-        .description("Classify text against a list of labels with deterministic offline matching.")
-        .input("text", "text")
-        .input_description("text", "Text to classify.")
-        .input_required("text", true)
-        .input_widget("text", "textarea")
-        .input("labels", "json")
-        .input_description("labels", "Array of candidate label strings.")
-        .input_required("labels", true)
-        .input_widget("labels", "json")
-        .output("label", "text")
-        .output_description("label", "Selected label.")
-        .output("confidence", "number")
-        .output_description("confidence", "Deterministic confidence score.")
-        .runtime("llm_classify", "lightflow.llm.classify")
-        .build()
+    workflow! {
+        input "text": "text" {
+            description: "Text to classify.",
+            required: true,
+            widget: "textarea",
+        }
+        input "labels": "json" {
+            description: "Array of candidate label strings.",
+            required: true,
+            widget: "json",
+        }
+        output "label": "text" {
+            description: "Selected label.",
+        }
+        output "confidence": "number" {
+            description: "Deterministic confidence score.",
+        }
+    }
+    .name("LLM Classify")
+    .description("Classify text against a list of labels with deterministic offline matching.")
+    .runtime("llm_classify", "lightflow.llm.classify")
+    .build()
 }

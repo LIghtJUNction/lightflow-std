@@ -1,47 +1,46 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
+    workflow! {
+        input "mask_a_path": "path" {
+            description: "First PNG mask path.",
+            required: true,
+            widget: "image",
+            artifact: "mask",
+        }
+        input "mask_b_path": "path" {
+            description: "Second PNG mask path. It is resized to the first mask dimensions when needed.",
+            required: true,
+            widget: "image",
+            artifact: "mask",
+        }
+        input "mode": "text" {
+            description: "Composition mode: max, add, multiply, min, subtract, union, or intersect.",
+            required: false,
+            default: "max",
+            choices: ["max","add","multiply","min","subtract","union","intersect"],
+            widget: "select",
+        }
+        input "output_path": "path" {
+            description: "Optional destination PNG path.",
+            required: false,
+            widget: "file_save",
+            artifact: "mask",
+        }
+        output "mask": "artifact" {
+            description: "Composed mask artifact metadata.",
+            artifact: "mask",
+        }
+        output "mask_path": "path" {
+            description: "Path to the composed grayscale PNG mask.",
+            artifact: "mask",
+        }
+        output "mode": "text" {
+            description: "Composition mode used.",
+        }
+    }
         .name("Mask Compose")
         .description("Compose two PNG masks into one grayscale mask.")
-        .input("mask_a_path", "path")
-        .input_description("mask_a_path", "First PNG mask path.")
-        .input_required("mask_a_path", true)
-        .input_widget("mask_a_path", "image")
-        .input_artifact_kind("mask_a_path", "mask")
-        .input("mask_b_path", "path")
-        .input_description(
-            "mask_b_path",
-            "Second PNG mask path. It is resized to the first mask dimensions when needed.",
-        )
-        .input_required("mask_b_path", true)
-        .input_widget("mask_b_path", "image")
-        .input_artifact_kind("mask_b_path", "mask")
-        .input("mode", "text")
-        .input_description(
-            "mode",
-            "Composition mode: max, add, multiply, min, subtract, union, or intersect.",
-        )
-        .input_required("mode", false)
-        .input_default_json("mode", "\"max\"")
-        .input_enum_json(
-            "mode",
-            "[\"max\",\"add\",\"multiply\",\"min\",\"subtract\",\"union\",\"intersect\"]",
-        )
-        .input_widget("mode", "select")
-        .input("output_path", "path")
-        .input_description("output_path", "Optional destination PNG path.")
-        .input_required("output_path", false)
-        .input_widget("output_path", "file_save")
-        .input_artifact_kind("output_path", "mask")
-        .output("mask", "artifact")
-        .output_description("mask", "Composed mask artifact metadata.")
-        .output_artifact_kind("mask", "mask")
-        .output("mask_path", "path")
-        .output_description("mask_path", "Path to the composed grayscale PNG mask.")
-        .output_artifact_kind("mask_path", "mask")
-        .output("mode", "text")
-        .output_description("mode", "Composition mode used.")
         .runtime("mask_compose", "lightflow.mask.compose")
         .build()
 }

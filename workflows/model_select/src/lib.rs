@@ -1,30 +1,34 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("Model Select")
-        .description("Select a model variant from a JSON variant list.")
-        .input("requirement_id", "text")
-        .input_description("requirement_id", "Model requirement id.")
-        .input_required("requirement_id", false)
-        .input_widget("requirement_id", "text")
-        .input("variants", "json")
-        .input_description(
-            "variants",
-            "Array of model variants with id, format, repo, and file fields.",
-        )
-        .input_required("variants", true)
-        .input_widget("variants", "json")
-        .input("preferred", "text")
-        .input_description("preferred", "Preferred variant id or format.")
-        .input_required("preferred", false)
-        .input_widget("preferred", "text")
-        .output("model", "json")
-        .output_description("model", "Selected model variant object.")
-        .output("variant_id", "text")
-        .output_description("variant_id", "Selected model variant id.")
-        .output("requirement_id", "text")
-        .output_description("requirement_id", "Model requirement id.")
-        .runtime("model_select", "lightflow.model.select")
-        .build()
+    workflow! {
+        input "requirement_id": "text" {
+            description: "Model requirement id.",
+            required: false,
+            widget: "text",
+        }
+        input "variants": "json" {
+            description: "Array of model variants with id, format, repo, and file fields.",
+            required: true,
+            widget: "json",
+        }
+        input "preferred": "text" {
+            description: "Preferred variant id or format.",
+            required: false,
+            widget: "text",
+        }
+        output "model": "json" {
+            description: "Selected model variant object.",
+        }
+        output "variant_id": "text" {
+            description: "Selected model variant id.",
+        }
+        output "requirement_id": "text" {
+            description: "Model requirement id.",
+        }
+    }
+    .name("Model Select")
+    .description("Select a model variant from a JSON variant list.")
+    .runtime("model_select", "lightflow.model.select")
+    .build()
 }

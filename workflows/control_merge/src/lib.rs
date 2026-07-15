@@ -1,27 +1,33 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("Control Merge")
-        .description("Merge two JSON values using a selected merge mode.")
-        .input("a", "json")
-        .input_description("a", "First value.")
-        .input_required("a", false)
-        .input_widget("a", "json")
-        .input("b", "json")
-        .input_description("b", "Second value.")
-        .input_required("b", false)
-        .input_widget("b", "json")
-        .input("mode", "text")
-        .input_description("mode", "Merge mode: first_non_null, object, or array.")
-        .input_required("mode", false)
-        .input_default_json("mode", "\"first_non_null\"")
-        .input_enum_json("mode", "[\"first_non_null\",\"object\",\"array\"]")
-        .input_widget("mode", "select")
-        .output("value", "json")
-        .output_description("value", "Merged value.")
-        .output("selected", "text")
-        .output_description("selected", "Merge mode used.")
-        .runtime("control_merge", "lightflow.control.merge")
-        .build()
+    workflow! {
+        input "a": "json" {
+            description: "First value.",
+            required: false,
+            widget: "json",
+        }
+        input "b": "json" {
+            description: "Second value.",
+            required: false,
+            widget: "json",
+        }
+        input "mode": "text" {
+            description: "Merge mode: first_non_null, object, or array.",
+            required: false,
+            default: "first_non_null",
+            choices: ["first_non_null","object","array"],
+            widget: "select",
+        }
+        output "value": "json" {
+            description: "Merged value.",
+        }
+        output "selected": "text" {
+            description: "Merge mode used.",
+        }
+    }
+    .name("Control Merge")
+    .description("Merge two JSON values using a selected merge mode.")
+    .runtime("control_merge", "lightflow.control.merge")
+    .build()
 }

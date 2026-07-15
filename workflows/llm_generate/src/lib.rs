@@ -1,22 +1,27 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("LLM Generate")
-        .description("Generate deterministic mock LLM text for offline workflow composition.")
-        .input("prompt", "text")
-        .input_description("prompt", "Prompt text.")
-        .input_required("prompt", true)
-        .input_widget("prompt", "prompt")
-        .input("model", "text")
-        .input_description("model", "Mock model name.")
-        .input_required("model", false)
-        .input_default_json("model", "\"mock\"")
-        .input_widget("model", "text")
-        .output("text", "text")
-        .output_description("text", "Generated mock text.")
-        .output("response", "text")
-        .output_description("response", "Generated mock response.")
-        .builtin_runtime("llm_mock", "lightflow.llm.generate", "builtin.llm.mock.v1")
-        .build()
+    workflow! {
+        input "prompt": "text" {
+            description: "Prompt text.",
+            required: true,
+            widget: "prompt",
+        }
+        input "model": "text" {
+            description: "Mock model name.",
+            required: false,
+            default: "mock",
+            widget: "text",
+        }
+        output "text": "text" {
+            description: "Generated mock text.",
+        }
+        output "response": "text" {
+            description: "Generated mock response.",
+        }
+    }
+    .name("LLM Generate")
+    .description("Generate deterministic mock LLM text for offline workflow composition.")
+    .builtin_runtime("llm_mock", "lightflow.llm.generate", "builtin.llm.mock.v1")
+    .build()
 }

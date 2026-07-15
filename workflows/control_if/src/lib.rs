@@ -1,25 +1,31 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("Control If")
-        .description("Select one of two JSON values based on a boolean condition.")
-        .input("condition", "boolean")
-        .input_description("condition", "Boolean condition used to choose the branch.")
-        .input_required("condition", true)
-        .input_widget("condition", "toggle")
-        .input("then_value", "json")
-        .input_description("then_value", "Value emitted when condition is true.")
-        .input_required("then_value", false)
-        .input_widget("then_value", "json")
-        .input("else_value", "json")
-        .input_description("else_value", "Value emitted when condition is false.")
-        .input_required("else_value", false)
-        .input_widget("else_value", "json")
-        .output("value", "json")
-        .output_description("value", "Selected branch value.")
-        .output("selected", "text")
-        .output_description("selected", "Selected branch name: then or else.")
-        .runtime("control_if", "lightflow.control.if")
-        .build()
+    workflow! {
+        input "condition": "boolean" {
+            description: "Boolean condition used to choose the branch.",
+            required: true,
+            widget: "toggle",
+        }
+        input "then_value": "json" {
+            description: "Value emitted when condition is true.",
+            required: false,
+            widget: "json",
+        }
+        input "else_value": "json" {
+            description: "Value emitted when condition is false.",
+            required: false,
+            widget: "json",
+        }
+        output "value": "json" {
+            description: "Selected branch value.",
+        }
+        output "selected": "text" {
+            description: "Selected branch name: then or else.",
+        }
+    }
+    .name("Control If")
+    .description("Select one of two JSON values based on a boolean condition.")
+    .runtime("control_if", "lightflow.control.if")
+    .build()
 }

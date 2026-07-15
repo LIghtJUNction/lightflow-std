@@ -1,25 +1,30 @@
 use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
-    workflow!()
-        .name("Image Save")
-        .description("Copy a PNG image to a selected output path.")
-        .input("image_path", "path")
-        .input_description("image_path", "Source PNG image path.")
-        .input_required("image_path", true)
-        .input_widget("image_path", "image")
-        .input_artifact_kind("image_path", "image")
-        .input("output_path", "path")
-        .input_description("output_path", "Optional destination PNG path.")
-        .input_required("output_path", false)
-        .input_widget("output_path", "file_save")
-        .input_artifact_kind("output_path", "image")
-        .output("image", "artifact")
-        .output_description("image", "Saved image artifact metadata.")
-        .output_artifact_kind("image", "image")
-        .output("image_path", "path")
-        .output_description("image_path", "Saved PNG image path.")
-        .output_artifact_kind("image_path", "image")
-        .runtime("image_save", "lightflow.image.save")
-        .build()
+    workflow! {
+        input "image_path": "path" {
+            description: "Source PNG image path.",
+            required: true,
+            widget: "image",
+            artifact: "image",
+        }
+        input "output_path": "path" {
+            description: "Optional destination PNG path.",
+            required: false,
+            widget: "file_save",
+            artifact: "image",
+        }
+        output "image": "artifact" {
+            description: "Saved image artifact metadata.",
+            artifact: "image",
+        }
+        output "image_path": "path" {
+            description: "Saved PNG image path.",
+            artifact: "image",
+        }
+    }
+    .name("Image Save")
+    .description("Copy a PNG image to a selected output path.")
+    .runtime("image_save", "lightflow.image.save")
+    .build()
 }
