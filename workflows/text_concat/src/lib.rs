@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Text Concat",
+        description: "Concatenate two text values or an array of text values.",
         input "a": "text" {
             description: "First text value when items is not provided.",
             required: false,
@@ -27,8 +29,8 @@ pub fn define() -> WorkflowSpec {
             description: "Concatenated text.",
         }
     }
-    .name("Text Concat")
-    .description("Concatenate two text values or an array of text values.")
-    .runtime("text_concat", "lightflow.text.concat")
+    .builtin_runtime("text_concat", "lightflow.text.concat", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.text_concat");

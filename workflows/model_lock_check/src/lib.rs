@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Model Lock Check",
+        description: "Check whether a workflow model requirement is recorded in lfw.lock.",
         input "workflow_id": "text" {
             description: "Workflow id used in the lock key.",
             required: true,
@@ -25,8 +27,12 @@ pub fn define() -> WorkflowSpec {
             description: "Raw lfw.lock model entry.",
         }
     }
-    .name("Model Lock Check")
-    .description("Check whether a workflow model requirement is recorded in lfw.lock.")
-    .runtime("model_lock_check", "lightflow.model.lock.check")
+    .builtin_runtime(
+        "model_lock_check",
+        "lightflow.model.lock.check",
+        "runner.v1",
+    )
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.model_lock_check");

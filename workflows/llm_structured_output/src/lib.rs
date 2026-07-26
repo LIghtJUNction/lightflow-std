@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "LLM Structured Output",
+        description: "Parse LLM text into JSON, or wrap plain text as a JSON object.",
         input "text": "text" {
             description: "LLM text or JSON string.",
             required: true,
@@ -19,8 +21,12 @@ pub fn define() -> WorkflowSpec {
             description: "Serialized JSON output.",
         }
     }
-    .name("LLM Structured Output")
-    .description("Parse LLM text into JSON, or wrap plain text as a JSON object.")
-    .runtime("llm_structured_output", "lightflow.llm.structured_output")
+    .builtin_runtime(
+        "llm_structured_output",
+        "lightflow.llm.structured_output",
+        "runner.v1",
+    )
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.llm_structured_output");

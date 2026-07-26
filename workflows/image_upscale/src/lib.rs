@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Upscale",
+        description: "Upscale a PNG image by an integer scale factor.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -30,8 +32,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Upscale")
-    .description("Upscale a PNG image by an integer scale factor.")
-    .runtime("image_upscale", "lightflow.image.upscale")
+    .builtin_runtime("image_upscale", "lightflow.image.upscale", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_upscale");

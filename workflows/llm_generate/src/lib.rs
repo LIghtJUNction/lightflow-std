@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "LLM Generate",
+        description: "Generate deterministic mock LLM text for offline workflow composition.",
         input "prompt": "text" {
             description: "Prompt text.",
             required: true,
@@ -20,8 +22,8 @@ pub fn define() -> WorkflowSpec {
             description: "Generated mock response.",
         }
     }
-    .name("LLM Generate")
-    .description("Generate deterministic mock LLM text for offline workflow composition.")
-    .builtin_runtime("llm_mock", "lightflow.llm.generate", "builtin.llm.mock.v1")
+    .builtin_runtime("llm_mock", "lightflow.llm.generate", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.llm_generate");

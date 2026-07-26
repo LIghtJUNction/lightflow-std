@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Crop",
+        description: "Crop a rectangular region from a PNG image.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -49,8 +51,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Crop")
-    .description("Crop a rectangular region from a PNG image.")
-    .runtime("image_crop", "lightflow.image.crop")
+    .builtin_runtime("image_crop", "lightflow.image.crop", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_crop");

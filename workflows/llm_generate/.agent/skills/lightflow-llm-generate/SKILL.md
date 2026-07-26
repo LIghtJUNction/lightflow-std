@@ -11,6 +11,9 @@ Use `lightflow.llm_generate` for deterministic offline mock text generation. Pro
 ## Workflow
 
 - Workflow id: `lightflow.llm_generate`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-llm-generate-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.llm.generate`, engine `builtin.llm.mock.v1`.
 - Input `prompt`: required prompt text.
 - Input `model`: optional mock model name.

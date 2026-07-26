@@ -11,6 +11,9 @@ Use `lightflow.text_to_image` for the built-in preview image runtime. This workf
 ## Workflow
 
 - Workflow id: `lightflow.text_to_image`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-text-to-image-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Cargo package `lightflow-text-to-image` supplies this ID and its Cargo package version through `workflow!()`.
 - Input `prompt`: required positive prompt; widget `prompt`.
 - Input `negative`: optional negative prompt; default `""`; widget `textarea`.

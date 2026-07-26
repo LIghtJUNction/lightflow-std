@@ -11,6 +11,9 @@ Use `lightflow.text_prompt` to normalize structured input into a text prompt.
 ## Workflow
 
 - Workflow id: `lightflow.text_prompt`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-text-prompt-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Cargo package `lightflow-text-prompt` supplies this ID and its Cargo package version through `workflow!()`.
 - Input `value`: required JSON source value; widget `json`.
 - Output `prompt`: text prompt generated from the source value.

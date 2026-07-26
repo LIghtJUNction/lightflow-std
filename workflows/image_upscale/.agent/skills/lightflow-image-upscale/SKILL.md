@@ -11,6 +11,9 @@ Use `lightflow.image_upscale` to enlarge a PNG image by an integer scale factor.
 ## Workflow
 
 - Workflow id: `lightflow.image_upscale`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-upscale-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.upscale`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Input `scale`: optional integer; default `2`.

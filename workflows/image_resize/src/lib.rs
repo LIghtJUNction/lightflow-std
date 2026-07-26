@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Resize",
+        description: "Resize a PNG image with nearest-neighbor sampling.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -35,8 +37,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Resize")
-    .description("Resize a PNG image with nearest-neighbor sampling.")
-    .runtime("image_resize", "lightflow.image.resize")
+    .builtin_runtime("image_resize", "lightflow.image.resize", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_resize");

@@ -11,6 +11,9 @@ Use `lightflow.control_switch` to select a value from a JSON object by selector 
 ## Workflow
 
 - Workflow id: `lightflow.control_switch`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-control-switch-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.control.switch`.
 - Input `selector`: required case key.
 - Input `cases`: required JSON object.

@@ -11,7 +11,10 @@ Use `lightflow.text_regex` to run deterministic regex matching or replacement in
 ## Workflow
 
 - Workflow id: `lightflow.text_regex`
-- Runtime: `lightflow.text.regex`.
+- Runtime ownership: the workflow crate owns `execute()` and exposes it through
+  the `lightflow-text-regex-runner` package binary.
+- Host engine: `package.command.v1`; the runner is declared in
+  `[package.metadata.lightflow]` and is started only by an explicit run.
 - Input `text`: required source text; widget `textarea`.
 - Input `pattern`: required Rust regex pattern.
 - Input `replacement`: optional replacement text. When omitted, output `text` is the original input.
@@ -21,6 +24,9 @@ Use `lightflow.text_regex` to run deterministic regex matching or replacement in
 
 ```bash
 lfw run lightflow.text_regex -i text='cat 42' -i pattern='(\d+)' -i replacement='id:$1'
+lfw plan lightflow.text_regex
+lfw trace last
+lfw replay
 ```
 
 ## API Usage
@@ -30,5 +36,5 @@ Start `lfw serve`, then call the workflow through the shared HTTP run contract. 
 ```bash
 curl -sS -X POST http://127.0.0.1:5174/workflows/lightflow.text_regex/run \
   -H 'content-type: application/json' \
-  -d '{"inputs":{}}'
+  -d '{"inputs":{"text":"cat 42","pattern":"(\\d+)","replacement":"id:$1"}}'
 ```

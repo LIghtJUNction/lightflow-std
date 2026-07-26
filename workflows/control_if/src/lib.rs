@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Control If",
+        description: "Select one of two JSON values based on a boolean condition.",
         input "condition": "boolean" {
             description: "Boolean condition used to choose the branch.",
             required: true,
@@ -24,8 +26,8 @@ pub fn define() -> WorkflowSpec {
             description: "Selected branch name: then or else.",
         }
     }
-    .name("Control If")
-    .description("Select one of two JSON values based on a boolean condition.")
-    .runtime("control_if", "lightflow.control.if")
+    .builtin_runtime("control_if", "lightflow.control.if", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.control_if");

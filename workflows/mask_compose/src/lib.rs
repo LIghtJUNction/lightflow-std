@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Mask Compose",
+        description: "Compose two PNG masks into one grayscale mask.",
         input "mask_a_path": "path" {
             description: "First PNG mask path.",
             required: true,
@@ -39,8 +41,8 @@ pub fn define() -> WorkflowSpec {
             description: "Composition mode used.",
         }
     }
-        .name("Mask Compose")
-        .description("Compose two PNG masks into one grayscale mask.")
-        .runtime("mask_compose", "lightflow.mask.compose")
+        .builtin_runtime("mask_compose", "lightflow.mask.compose", "runner.v1")
         .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.mask_compose");

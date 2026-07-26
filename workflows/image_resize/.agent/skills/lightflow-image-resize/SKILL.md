@@ -11,6 +11,9 @@ Use `lightflow.image_resize` to resize a PNG image with nearest-neighbor samplin
 ## Workflow
 
 - Workflow id: `lightflow.image_resize`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-resize-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.resize`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Inputs `width` and `height`: required output dimensions; widget `number`.

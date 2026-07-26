@@ -1,0 +1,1 @@
+lightflow_std_runtime::standard_runner_binary!(lightflow_control_merge);

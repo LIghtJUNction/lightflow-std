@@ -1,0 +1,11 @@
+[package]
+name = "lightflow-std-runtime"
+version = "0.1.0"
+edition = "2024"
+description = "Package-owned execution helpers for LightFlow standard workflows."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/lightjunction/lightflow-std"
+
+[dependencies]
+lightflow = { workspace = true }
+png = { workspace = true }

@@ -11,6 +11,9 @@ Use `lightflow.image_edit` for image-to-image preview workflows. The builtin run
 ## Workflow
 
 - Workflow id: `lightflow.image_edit`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-edit-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.edit` with engine `builtin.preview.edit.v1`.
 - Inputs: `image_path`, `prompt`, optional `negative`, optional `seed`, optional `output_path`.
 - Outputs: `image`, `image_path`, `prompt`.

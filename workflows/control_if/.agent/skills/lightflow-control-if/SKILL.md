@@ -11,6 +11,9 @@ Use `lightflow.control_if` to choose between `then_value` and `else_value`.
 ## Workflow
 
 - Workflow id: `lightflow.control_if`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-control-if-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.control.if`.
 - Input `condition`: required boolean; widget `toggle`.
 - Inputs `then_value` and `else_value`: optional JSON values.

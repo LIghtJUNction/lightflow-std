@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Load",
+        description: "Load a PNG image path into an image artifact handle.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -17,8 +19,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Load")
-    .description("Load a PNG image path into an image artifact handle.")
-    .runtime("image_load", "lightflow.image.load")
+    .builtin_runtime("image_load", "lightflow.image.load", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_load");

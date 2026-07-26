@@ -11,6 +11,9 @@ Use `lightflow.llm_classify` to choose a label from a JSON label array. The buil
 ## Workflow
 
 - Workflow id: `lightflow.llm_classify`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-llm-classify-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.llm.classify`.
 - Input `text`: required text.
 - Input `labels`: required JSON array of labels.

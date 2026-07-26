@@ -11,6 +11,9 @@ Use `lightflow.image_inpaint` for masked image editing preview workflows. The bu
 ## Workflow
 
 - Workflow id: `lightflow.image_inpaint`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-inpaint-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.inpaint` with engine `builtin.preview.inpaint.v1`.
 - Inputs: `image_path`, `mask_path`, `prompt`, optional `negative`, optional `seed`, optional `output_path`.
 - Outputs: `image`, `image_path`, `prompt`.
