@@ -11,6 +11,9 @@ Use `lightflow.image_load` to validate a PNG file and expose it as an image arti
 ## Workflow
 
 - Workflow id: `lightflow.image_load`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-load-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.load`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Outputs `image` and `image_path`; artifact kind `image`.

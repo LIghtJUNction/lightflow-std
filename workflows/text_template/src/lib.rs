@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Text Template",
+        description: "Render a text template with JSON variables.",
         input "template": "text" {
             description: "Template text with placeholders such as {{topic}}.",
             required: true,
@@ -17,8 +19,8 @@ pub fn define() -> WorkflowSpec {
             description: "Rendered template text.",
         }
     }
-    .name("Text Template")
-    .description("Render a text template with JSON variables.")
-    .runtime("text_template", "lightflow.text.template")
+    .builtin_runtime("text_template", "lightflow.text.template", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.text_template");

@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "LLM Classify",
+        description: "Classify text against a list of labels with deterministic offline matching.",
         input "text": "text" {
             description: "Text to classify.",
             required: true,
@@ -19,8 +21,8 @@ pub fn define() -> WorkflowSpec {
             description: "Deterministic confidence score.",
         }
     }
-    .name("LLM Classify")
-    .description("Classify text against a list of labels with deterministic offline matching.")
-    .runtime("llm_classify", "lightflow.llm.classify")
+    .builtin_runtime("llm_classify", "lightflow.llm.classify", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.llm_classify");

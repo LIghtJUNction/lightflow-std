@@ -11,6 +11,9 @@ Use `lightflow.control_merge` to combine two JSON values.
 ## Workflow
 
 - Workflow id: `lightflow.control_merge`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-control-merge-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.control.merge`.
 - Inputs `a` and `b`: optional JSON values.
 - Input `mode`: `first_non_null`, `object`, or `array`; default `first_non_null`.

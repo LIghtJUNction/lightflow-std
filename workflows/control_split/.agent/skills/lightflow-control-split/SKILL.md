@@ -11,6 +11,9 @@ Use `lightflow.control_split` to turn a JSON array or object into `first`, `rest
 ## Workflow
 
 - Workflow id: `lightflow.control_split`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-control-split-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.control.split`.
 - Input `value`: required JSON value.
 - Outputs `first`, `rest`, and `items`.

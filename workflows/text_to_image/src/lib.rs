@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Text To Image",
+        description: "Generate an image artifact from a text prompt through a pluggable image runtime.",
         input "prompt": "text" {
             description: "Positive text prompt used for image generation.",
             required: true,
@@ -56,12 +58,10 @@ pub fn define() -> WorkflowSpec {
             model: "image_model",
         }
     }
-    .name("Text To Image")
-    .description("Generate an image artifact from a text prompt through a pluggable image runtime.")
     .builtin_runtime(
         "image_runtime",
         "lightflow.image.generate",
-        "builtin.preview.v1",
+        "runner.v1",
     )
     .hf_model(
         "image_model",
@@ -81,3 +81,5 @@ pub fn define() -> WorkflowSpec {
     )
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.text_to_image");

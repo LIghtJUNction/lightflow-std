@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Inpaint Preview",
+        description: "Create a deterministic preview inpaint from a source PNG, mask, and prompt.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -47,12 +49,10 @@ pub fn define() -> WorkflowSpec {
             description: "Prompt used for the preview inpaint.",
         }
     }
-    .name("Image Inpaint Preview")
-    .description("Create a deterministic preview inpaint from a source PNG, mask, and prompt.")
     .builtin_runtime(
         "image_inpaint_preview",
         "lightflow.image.inpaint",
-        "builtin.preview.inpaint.v1",
+        "runner.v1",
     )
     .hf_model(
         "image_model",
@@ -64,3 +64,5 @@ pub fn define() -> WorkflowSpec {
     )
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_inpaint");

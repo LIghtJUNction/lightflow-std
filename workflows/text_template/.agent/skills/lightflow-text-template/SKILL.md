@@ -11,6 +11,9 @@ Use `lightflow.text_template` to render prompt text with `{{key}}` placeholders.
 ## Workflow
 
 - Workflow id: `lightflow.text_template`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-text-template-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.text.template`.
 - Input `template`: required template text; widget `textarea`.
 - Input `vars`: optional JSON object; default `{}`; widget `json`.

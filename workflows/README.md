@@ -3,7 +3,7 @@
 Each top-level directory is one workflow crate, for example
 `text_plan/src/lib.rs`. Reusable workflows define `src/lib.rs` and do not define
 `src/main.rs`. Leaf workflows declare ports and no nodes. Composite workflows
-use `.node(..., workflow_id)` to nest other workflows.
+use `node id: "workflow.id"` entries inside `workflow! {}` to nest other workflows.
 
 Ports should include Node Schema v1 metadata when a UI or agent needs to render
 or validate the node contract: descriptions, required/default flags, numeric

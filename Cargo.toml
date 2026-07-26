@@ -1,6 +1,9 @@
 [workspace]
 resolver = "3"
-members = ["workflows/*"]
+members = ["runtime", "workflows/*"]
 
 [workspace.dependencies]
-lightflow = "0.1.5"
+lightflow = { version = "0.1.4", path = "../.." }
+lightflow-std-runtime = { version = "0.1.0", path = "runtime" }
+png = "0.18.1"
+regex = "1.12.2"

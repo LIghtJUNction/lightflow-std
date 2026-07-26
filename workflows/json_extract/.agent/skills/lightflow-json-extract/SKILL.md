@@ -11,6 +11,9 @@ Use `lightflow.json_extract` to extract a JSON value by dot path. Array indexes 
 ## Workflow
 
 - Workflow id: `lightflow.json_extract`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-json-extract-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.json.extract`.
 - Input `value`: required source JSON; widget `json`.
 - Input `path`: required dot path, for example `user.name` or `items.0.title`.

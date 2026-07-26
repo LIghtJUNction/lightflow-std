@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Invert",
+        description: "Invert the colors of an input PNG image.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -23,12 +25,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Invert")
-    .description("Invert the colors of an input PNG image.")
-    .builtin_runtime(
-        "image_runtime",
-        "lightflow.image.invert",
-        "builtin.image.invert.v1",
-    )
+    .builtin_runtime("image_runtime", "lightflow.image.invert", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_invert");

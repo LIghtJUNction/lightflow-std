@@ -11,6 +11,9 @@ Use this skill to invert the colors of a PNG image generated or referenced by a 
 ## Workflow
 
 - Workflow id: `lightflow.image_invert`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-invert-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Input `output_path`: optional destination PNG path; artifact kind `image`; widget `file_save`.
 - Output `image_path`: inverted PNG path; artifact kind `image`.

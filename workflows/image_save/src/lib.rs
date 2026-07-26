@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Save",
+        description: "Copy a PNG image to a selected output path.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -23,8 +25,8 @@ pub fn define() -> WorkflowSpec {
             artifact: "image",
         }
     }
-    .name("Image Save")
-    .description("Copy a PNG image to a selected output path.")
-    .runtime("image_save", "lightflow.image.save")
+    .builtin_runtime("image_save", "lightflow.image.save", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_save");

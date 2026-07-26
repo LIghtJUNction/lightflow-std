@@ -11,6 +11,9 @@ Use `lightflow.model_lock_check` to check whether `lfw.lock` contains a model en
 ## Workflow
 
 - Workflow id: `lightflow.model_lock_check`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-model-lock-check-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.model.lock.check`.
 - Inputs `workflow_id` and `requirement_id`: required text values.
 - Outputs `locked`, `exists`, `path`, and `entry`.

@@ -11,6 +11,9 @@ Use `lightflow.image_save` to copy a PNG image to a chosen output path.
 ## Workflow
 
 - Workflow id: `lightflow.image_save`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-save-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.save`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Input `output_path`: optional destination PNG path; artifact kind `image`; widget `file_save`.

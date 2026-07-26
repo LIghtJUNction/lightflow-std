@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Control Switch",
+        description: "Select a JSON value from a cases object by selector.",
         input "selector": "text" {
             description: "Case key to select.",
             required: true,
@@ -24,8 +26,8 @@ pub fn define() -> WorkflowSpec {
             description: "Selected case key or default.",
         }
     }
-    .name("Control Switch")
-    .description("Select a JSON value from a cases object by selector.")
-    .runtime("control_switch", "lightflow.control.switch")
+    .builtin_runtime("control_switch", "lightflow.control.switch", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.control_switch");

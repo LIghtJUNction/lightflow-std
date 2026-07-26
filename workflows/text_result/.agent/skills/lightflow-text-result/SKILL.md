@@ -11,6 +11,9 @@ Use `lightflow.text_result` to pass generated text into a final result port.
 ## Workflow
 
 - Workflow id: `lightflow.text_result`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-text-result-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Cargo package `lightflow-text-result` supplies this ID and its Cargo package version through `workflow!()`.
 - Input `text`: required generated text; widget `textarea`.
 - Output `result`: final normalized text result.

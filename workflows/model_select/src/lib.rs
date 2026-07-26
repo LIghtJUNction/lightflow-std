@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Model Select",
+        description: "Select a model variant from a JSON variant list.",
         input "requirement_id": "text" {
             description: "Model requirement id.",
             required: false,
@@ -27,8 +29,8 @@ pub fn define() -> WorkflowSpec {
             description: "Model requirement id.",
         }
     }
-    .name("Model Select")
-    .description("Select a model variant from a JSON variant list.")
-    .runtime("model_select", "lightflow.model.select")
+    .builtin_runtime("model_select", "lightflow.model.select", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.model_select");

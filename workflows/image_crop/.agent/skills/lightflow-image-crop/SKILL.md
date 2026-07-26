@@ -11,6 +11,9 @@ Use `lightflow.image_crop` to crop a rectangular region from a PNG image.
 ## Workflow
 
 - Workflow id: `lightflow.image_crop`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-image-crop-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.image.crop`.
 - Input `image_path`: required source PNG path; artifact kind `image`; widget `image`.
 - Inputs `x`, `y`, `width`, and `height`: crop rectangle; widget `number`.

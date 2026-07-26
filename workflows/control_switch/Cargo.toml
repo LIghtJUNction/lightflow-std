@@ -8,5 +8,13 @@ repository = "https://github.com/lightjunction/lightflow-std"
 keywords = ["lightflow", "workflow"]
 categories = ["development-tools"]
 
+[package.metadata.lightflow]
+runner = "lightflow-control-switch-runner"
+
+[[bin]]
+name = "lightflow-control-switch-runner"
+path = "src/bin/runner.rs"
+
 [dependencies]
 lightflow = { workspace = true }
+lightflow-std-runtime = { workspace = true }

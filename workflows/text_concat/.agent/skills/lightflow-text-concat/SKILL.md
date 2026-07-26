@@ -11,6 +11,9 @@ Use `lightflow.text_concat` to join two text inputs or an array of values.
 ## Workflow
 
 - Workflow id: `lightflow.text_concat`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-text-concat-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.text.concat`.
 - Inputs `a` and `b`: optional text values; widget `textarea`.
 - Input `items`: optional JSON array; widget `json`.

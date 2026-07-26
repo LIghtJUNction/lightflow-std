@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "JSON Extract",
+        description: "Extract a value from JSON by dot path.",
         input "value": "json" {
             description: "Source JSON value.",
             required: true,
@@ -22,8 +24,8 @@ pub fn define() -> WorkflowSpec {
             description: "Whether a non-null value was found.",
         }
     }
-    .name("JSON Extract")
-    .description("Extract a value from JSON by dot path.")
-    .runtime("json_extract", "lightflow.json.extract")
+    .builtin_runtime("json_extract", "lightflow.json.extract", "runner.v1")
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.json_extract");

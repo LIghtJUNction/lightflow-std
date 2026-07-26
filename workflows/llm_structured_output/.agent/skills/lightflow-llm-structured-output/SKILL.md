@@ -11,6 +11,9 @@ Use `lightflow.llm_structured_output` to parse JSON text or wrap plain text as `
 ## Workflow
 
 - Workflow id: `lightflow.llm_structured_output`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-llm-structured-output-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.llm.structured_output`.
 - Input `text`: required text or JSON string.
 - Input `schema`: optional JSON schema metadata.

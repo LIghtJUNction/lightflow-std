@@ -11,6 +11,9 @@ Use `lightflow.mask_compose` to combine two PNG masks into a grayscale mask arti
 ## Workflow
 
 - Workflow id: `lightflow.mask_compose`
+- Runtime ownership: this workflow crate owns its public `execute()` entry and exposes it through the `lightflow-mask-compose-runner` package binary.
+- Host engine: `package.command.v1`; discovery, help, and plan do not execute package source.
+- Input values are validated against their declared JSON types without string coercion.
 - Runtime: `lightflow.mask.compose`.
 - Inputs: `mask_a_path`, `mask_b_path`, optional `mode`, optional `output_path`.
 - Modes: `max`, `add`, `multiply`, `min`, `subtract`, `union`, `intersect`.

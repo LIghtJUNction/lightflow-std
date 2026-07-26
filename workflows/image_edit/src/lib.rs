@@ -2,6 +2,8 @@ use lightflow::preload::*;
 
 pub fn define() -> WorkflowSpec {
     workflow! {
+        name: "Image Edit Preview",
+        description: "Create a deterministic preview image edit from a source PNG and prompt.",
         input "image_path": "path" {
             description: "Source PNG image path.",
             required: true,
@@ -41,13 +43,7 @@ pub fn define() -> WorkflowSpec {
             description: "Prompt used for the preview edit.",
         }
     }
-    .name("Image Edit Preview")
-    .description("Create a deterministic preview image edit from a source PNG and prompt.")
-    .builtin_runtime(
-        "image_edit_preview",
-        "lightflow.image.edit",
-        "builtin.preview.edit.v1",
-    )
+    .builtin_runtime("image_edit_preview", "lightflow.image.edit", "runner.v1")
     .hf_model(
         "image_model",
         "flux-edit-preview",
@@ -58,3 +54,5 @@ pub fn define() -> WorkflowSpec {
     )
     .build()
 }
+
+lightflow_std_runtime::standard_runner!("lightflow.image_edit");
